@@ -7,9 +7,8 @@
  */
 
 import React from 'react';
-import 'react-native-gesture-handler';
 import {SafeAreaView, StyleSheet, ScrollView, View, Text} from 'react-native';
-
+import {Scene, Router} from 'react-native-router-flux';
 import {
     Header,
     LearnMoreLinks,
@@ -17,12 +16,10 @@ import {
     DebugInstructions,
     ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {NavigationContainer} from '@react-navigation/native';
-import {Stack} from '../router/Routes';
 
 declare const global: any;
 
-const Demo: React.FC = () => {
+export const Demo: React.FC = () => {
     return (
         <SafeAreaView>
             <ScrollView
@@ -73,11 +70,11 @@ const Demo: React.FC = () => {
 
 const App: React.FC = () => {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Home" component={Demo} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Router>
+            <Scene key="root">
+                <Scene key="home" component={Demo} />
+            </Scene>
+        </Router>
     );
 };
 
